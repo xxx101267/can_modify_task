@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p,ul{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			img{
+				border: 0;
+				vertical-align: top;
+			}
+			input{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				width:600px;
+				border: 1px solid black;
+				border-bottom: none;
+				margin: 30px auto;
+			}
+			.title{
+				width:100%;
+				text-align: center;
+				background-color: brown;
+				color: white;
+				font-weight: bold;
+				font-size: 20px;
+				line-height: 40px;
+			}
+			.list1 span{
+				display: inline-block;
+				line-height: 50px;
+				width:300px;
+				height:50px;
+				text-align: center;
+			}
+			.list1 input{
+				margin-top: 17px;;
+			}
+			.list1{
+				height:50px;
+			}
+			.text{
+				width:300px;
+				height:30px;
+				margin-top: 8px;
+			}
+			.list2{
+				display: none;
+				height:50px;
+			}
+			.box li{
+				border-bottom: 1px solid black;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<p class="title">任务列表</p>
+			<ul class="box">
+				<li class="lis">
+					<div class="list1">
+						<span class="spans">请修改</span>
+						<input type="button" value="修改" class="dify"/>
+					</div>
+					<div class="list2">
+						<input type="text" class="text"/>
+						<input type="button" value="确定" class="sure"/>
+						<input type="button" value="取消" class="cancel"/>
+					</div>
+				</li>
+				<li class="lis">
+					<div class="list1">
+						<span class="spans">请修改</span>
+						<input type="button" value="修改" class="dify"/>
+					</div>
+					<div class="list2">
+						<input type="text" class="text"/>
+						<input type="button" value="确定" class="sure"/>
+						<input type="button" value="取消" class="cancel"/>
+					</div>
+				</li>
+				<li class="lis">
+					<div class="list1">
+						<span class="spans">请修改</span>
+						<input type="button" value="修改" class="dify"/>
+					</div>
+					<div class="list2">
+						<input type="text" class="text"/>
+						<input type="button" value="确定" class="sure"/>
+						<input type="button" value="取消" class="cancel"/>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<script>
+			var lis=document.getElementsByClassName("lis");
+			
+			function elem1(a,c){
+					return lis[a].getElementsByClassName(c)[0];
+				}
+			
+			function tab(x){
+				
+				var dify=elem1(x,"dify");
+				var list1=elem1(x,"list1");
+				var list2=elem1(x,"list2");
+				var sure=elem1(x,"sure");
+				var spans=elem1(x,"spans");
+				var text=elem1(x,"text");
+				var cancel=elem1(x,"cancel");
+				
+				
+				dify.onclick=function(){
+					list1.style.display="none";
+					list2.style.display="block";
+				}
+				sure.onclick=function(){
+					list1.style.display="block";
+					list2.style.display="none";
+					if(text.value==""){
+						return;
+					}else{
+						spans.innerHTML=text.value;
+					}
+				}
+				cancel.onclick=function(){
+					list1.style.display="block";
+					list2.style.display="none";
+				}
+			}
+			
+			for(var i=0;i<lis.length;i++){
+				tab(i);
+			}
+			
+			
+		</script>
+	</body>
+</html>
